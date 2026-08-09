@@ -1,6 +1,6 @@
 package com.project.questforge.entity;
 
-public enum Status {
+public enum QuestStatus {
     AVAILABLE,
     IN_PROGRESS,
     COMPLETED,

@@ -6,31 +6,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "quests")
+@Table(name = "party_join_requests")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Quest {
+public class PartyJoinRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-
-    private String description;
-
-    private Long requiredXp;
-
-    private Long rewardXp;
+    private String message;
 
     @Enumerated(EnumType.STRING)
-    private QuestStatus status;
+    @Column(nullable = false)
+    private PartyJoinStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "advisor_id", nullable = false)
-    private User advisor;
-
-    @ManyToOne
-    @JoinColumn(name = "party_id")
+    @JoinColumn(name = "party_id", nullable = false)
     private Party party;
+
+    @ManyToOne
+    @JoinColumn(name = "adventurer_id", nullable = false)
+    private Adventurer adventurer;
+
 }
